@@ -1,0 +1,42 @@
+<!-- templates/survey.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dialog Evaluation</title>
+  </head>
+  <body>
+    <h1>Dialog Evaluation</h1>
+    <form action="{{ url_for('evaluate_dialog') }}" method="post">
+      {{ form.hidden_tag() }}
+      <div>
+        <p>Dialog Context:</p>
+        <p>{{ dialog.dialog_context }}</p>
+      </div>
+      <div>
+        <p>Response A:</p>
+        <p>{{ dialog.response_a }}</p>
+        <div>
+          {{ form.coherence_a.label }} {{ form.coherence_a }}
+          {% for error in form.coherence_a.errors %}
+          <p style="color: red;">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <p>Response B:</p>
+        <p>{{ dialog.response_b }}</p>
+        <div>
+          {{ form.coherence_b.label }} {{ form.coherence_b }}
+          {% for error in form.coherence_b.errors %}
+          <p style="color: red;">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>
+

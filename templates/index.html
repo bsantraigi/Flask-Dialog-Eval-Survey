@@ -1,0 +1,24 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="{{ url_for('login') }}" method="post">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.id_token.label }} {{ form.id_token }}
+        {% for error in form.id_token.errors %}
+        <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <div>
+        <input type="submit" value="Login">
+      </div>
+    </form>
+  </body>
+</html>
+
